@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+
+import  {Button} from './Button';
+import { Socket } from './Socket';
 
 
-export default function Content() {
- 
-  return (
+export default function Content(){
+  const [messages,setMessages] = useState([])
+  
+  function getNewMessages(){
+    useEffect(() => {
+      Socket.on('message received',(data) =>{
+        console.log("Received messages from the server: " + data["message"]);
+        setMessages(data["message"])
+      })
+    });
+  }
+  
+  getNewMessages();
+  
+  return(
     <div>
-      <h1> test </h1>
-      <h2> sockets </h2>
+    <ul>
+        { /* {messages.map((msg) => (   //// TODO HERE
+           <li> {msg} </li>
+         ))}
+         */
+        }
+    </ul>
+    <Button />
     </div>
   );
 }
