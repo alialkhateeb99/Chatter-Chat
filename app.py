@@ -14,7 +14,7 @@ def hello():
     return flask.render_template('index.html')
     
 @socketio.on('new message')
-def on_new_number(data):
+def on_new_message(data):
     print("Got an event for new message with data:", data)
     message_text = data['message']
     if message_text in messages_list:
