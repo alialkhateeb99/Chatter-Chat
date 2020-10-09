@@ -21,8 +21,8 @@ def on_new_message(data):
         print(message_text + " is already in the list!")
     else:
         print("Added " + message_text + " to the list! Your list is now : ")
+        messages_list.append(message_text)
         print(messages_list)
-    messages_list.append(message_text)
     socketio.emit('message received', {
         'message': message_text
     })
