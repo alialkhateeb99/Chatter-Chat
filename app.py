@@ -5,6 +5,8 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import flask_sqlalchemy
 
+MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
+
 app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
