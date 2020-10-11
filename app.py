@@ -32,9 +32,6 @@ db.create_all()
 db.session.commit()
 
 
-messages_list = []
-
-
 def emit_all_messages(channel):
     #we are going to emit to 'all messages'
     all_messages = [ \
