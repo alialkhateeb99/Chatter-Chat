@@ -5,6 +5,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import flask_sqlalchemy
 import models
+import json
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
 
@@ -35,11 +36,11 @@ messages_list = []
 
 
 def emit_all_messages(channel):
-    # we are going to emit to 'all messages'
+    #we are going to emit to 'all messages'
     all_messages = [ \
         db_message.message for db_message in \
         db.session.query(models.Messages).all() ]
-    
+        
     socketio.emit(channel,{
         'allMessages': all_messages
     })
@@ -62,6 +63,8 @@ def on_new_message(data):
     print("Got an event for new message input with data:", data)
     
     db.session.add(models.Messages(data["message"]));
+    
+    # bot functions todo
     db.session.commit();
     
     emit_all_messages(MESSAGES_RECEIVED_CHANNEL_KEY)
