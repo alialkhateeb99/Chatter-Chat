@@ -11,9 +11,9 @@ export default function Content(){
   function getNewMessages(){
     
     useEffect(() => {
-      Socket.on('message received',(data) =>{
-        console.log("Received messages from the server: " + data["message"]);
-        setMessages(data["message"])
+      Socket.on('all messages',(data) =>{
+        console.log("Received messages from the server: " + data["allMessages"]);
+        setMessages(data["allMessages"])
         
       })
     });
@@ -23,10 +23,12 @@ export default function Content(){
   
   return(
     <div>
-        <ul>
-        
-        
-        </ul>
+        <ol>
+        { 
+          messages.map((message,index) => 
+          <li key={index} > { message } </li>)
+        }
+        </ol>
     <Button />
     </div>
   );
