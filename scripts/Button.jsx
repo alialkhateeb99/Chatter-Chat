@@ -8,7 +8,7 @@ function handleSubmit(event){
     Socket.emit('new message',{
         'message': newMessage.value
     });
-    console.log("Sent the message" + newMessage.value + " to the server!");
+    console.log("Sent the message " + newMessage.value + " to the server!");
     
     newMessage.value =''
     
