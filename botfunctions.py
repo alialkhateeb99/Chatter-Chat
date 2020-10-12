@@ -18,9 +18,9 @@ def get_bot_info(message):
                 about_text += " you with! For a list of commands type '!! help' "
                 return about_text
             if command_name == "help":
-                help_text = " '!! about' for a brief description about the chat room\n"
+                help_text = "'!! about' for a brief description about the chat room\n"
                 help_text += "'!! help' for a list of supported commands\n"
-                help_text += "'!! funtranslate to translate a message to a fun language!"
+                help_text += "'!! funtranslate' to translate a message to a fun language!"
                 return help_text
             
             
@@ -30,5 +30,3 @@ def get_bot_info(message):
         return -1
     
     
-result = get_bot_info("!! about a")
-print(result)

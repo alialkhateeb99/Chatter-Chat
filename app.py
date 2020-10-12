@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import flask_sqlalchemy
 import models
 import json
+from botfunctions import *
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
 
@@ -54,13 +55,19 @@ def on_connect():
 @socketio.on('disconnect')
 def on_disconnect():
     print ('Someone disconnected!')
+    socketio.emit('disconnect', {
+        'test': 'Disconnected'
+    })
 
 @socketio.on('new message')
 def on_new_message(data):
     print("Got an event for new message input with data:", data)
     
     db.session.add(models.Messages(data["message"]));
-    
+    result = get_bot_info(data["message"])
+    if result != -1:
+        db.session.add(models.Messages(result))
+        
     # bot functions todo
     db.session.commit();
     

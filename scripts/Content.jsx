@@ -2,12 +2,13 @@ import React, { useState,useEffect } from "react";
 
 
 import  {Button} from './Button';
+import {Users} from './Users';
 import { Socket } from './Socket';
 
 
 export default function Content(){
   const [messages,setMessages] = useState([])
-  
+
   function getNewMessages(){
     
     useEffect(() => {
@@ -20,9 +21,11 @@ export default function Content(){
   }
   
   getNewMessages();
-  
+
   return(
     <div>
+    <Users />
+        
         <ol>
         { 
           messages.map((message,index) => 
@@ -30,6 +33,7 @@ export default function Content(){
         }
         </ol>
     <Button />
+    
     </div>
   );
 }
