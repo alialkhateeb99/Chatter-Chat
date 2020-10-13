@@ -6,9 +6,9 @@ list_of_commands = ["about","help","funtranslate"]
 def get_bot_info(message):
     
     splitted_message = message.split()
-    command_name = splitted_message[1]
     if splitted_message[0] == "!!":
-        
+        command_name = splitted_message[1]
+
         if command_name in list_of_commands:
             
             actual_message = " ".join(splitted_message[2:])
