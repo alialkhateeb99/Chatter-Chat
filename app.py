@@ -23,7 +23,7 @@ load_dotenv(dotenv_path)
 # sql_pwd = os.environ['SQL_PASSWORD']
 
 #database_uri = os.getenv('DATABASE_URL')
-database_uri = os.environ['DATABASE_URL']
+database_uri = os.getenv('DATABASE_URL')
 
 #database_uri = 'postgresql://{}:{}@localhost/db'.format(sql_user, sql_pwd)
 
