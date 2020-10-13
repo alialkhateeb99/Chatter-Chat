@@ -22,6 +22,7 @@ export default function Content(){
   }
   
   getNewMessages();
+  
 
   return(
     <div className="parent-div">
@@ -31,7 +32,7 @@ export default function Content(){
         <ol>
         { 
           messages.map((message,index) => 
-          <li key={index} > { message } </li>)
+          <li  key={index} > { message } </li>)
         }
         </ol>
     </div>

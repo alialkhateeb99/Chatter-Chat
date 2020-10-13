@@ -64,7 +64,7 @@ def on_new_message(data):
     db.session.add(models.Messages(data["message"]));
     result = get_bot_info(data["message"])
     if result != -1:
-        db.session.add(models.Messages(result))
+        db.session.add(models.Messages("ALIS_CHAT_BOT : " + result ))
         
     # bot functions todo
     db.session.commit();
