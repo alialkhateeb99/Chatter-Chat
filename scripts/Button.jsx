@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Socket } from './Socket';
 
+import './myStyles.css';
 
 function handleSubmit(event){
     let newMessage = document.getElementById("msg_input")
@@ -18,8 +19,8 @@ function handleSubmit(event){
 export function Button(){
     return(
         <form onSubmit={handleSubmit}>
-            <input id="msg_input" placeholder="enter message here"/>
-            <button> Send </button>
+            <input className="input-box" id="msg_input" placeholder="Enter message here"/>
+            <button className="buttonStyle" > Send Message </button>
         </form>
     );
 }

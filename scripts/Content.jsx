@@ -1,13 +1,14 @@
-import React, { useState,useEffect } from "react";
-
+import React, { useState,useEffect,useRef } from "react";
 
 import  {Button} from './Button';
 import {Users} from './Users';
 import { Socket } from './Socket';
+import './myStyles.css';
 
 
 export default function Content(){
   const [messages,setMessages] = useState([])
+  
 
   function getNewMessages(){
     
@@ -23,17 +24,21 @@ export default function Content(){
   getNewMessages();
 
   return(
-    <div>
+    <div className="parent-div">
     <Users />
-        
+    <div className="Content">
+
         <ol>
         { 
           messages.map((message,index) => 
           <li key={index} > { message } </li>)
         }
         </ol>
-    <Button />
-    
+    </div>
+ 
+      <div className="texts">
+          <Button > </Button>
+      </div>
     </div>
   );
 }

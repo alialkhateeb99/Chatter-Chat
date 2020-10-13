@@ -1,0 +1,52 @@
+.Content{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:900px;
+  height:400px;
+  overflow-y:auto;
+  border:5px solid #2d545e;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.parent-div{
+   
+  border:solid 1px #33aaff;
+  width:70%;
+  height:90%;
+  margin:0 auto;
+
+}
+.texts{
+   /* top:25%;*/
+   /* position:relative;*/
+   /* align-items: center;*/
+   /* display: flex;*/
+   /* justify-content: center;*/
+   /*border:5px solid black;*/
+   /*width:900px;*/
+   border:5px solid blue;
+  margin: auto;
+  position: relative;
+  text-align: center;
+  top: 22%;
+  width:900px; 
+
+}
+
+.input-box{
+    margin-top:9px;
+    padding:8px;
+    width:85%;
+    font-size:15px;
+    
+}
+
+.buttonStyle{
+   font-size:16px;
+   padding-left:10px;
+   height:38px;
+}
+
