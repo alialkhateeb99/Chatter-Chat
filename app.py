@@ -22,7 +22,10 @@ load_dotenv(dotenv_path)
 sql_user = os.environ['SQL_USER']
 sql_pwd = os.environ['SQL_PASSWORD']
 
-database_uri = 'postgresql://{}:{}@localhost/db'.format(sql_user, sql_pwd)
+#database_uri = os.getenv('DATABASE_URL')
+database_uri = os.environ['DATABASE_URL']
+
+#database_uri = 'postgresql://{}:{}@localhost/db'.format(sql_user, sql_pwd)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
