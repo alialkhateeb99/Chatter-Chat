@@ -9,34 +9,27 @@ body{
   width:900px;
   height:400px;
   overflow-y:auto;
-  border:5px solid #2d545e;
+  border:3px solid #e0bcbf;
   display: flex;
   flex-direction: column-reverse;
+  font-size:22px;
 }
 
 .parent-div{
   border:solid 1px #33aaff;
-  width:70%;
+  width:85%;
   height:90%;
   margin:0 auto;
+  border:3px solid #e0bcbf;
 
 }
 .texts{
-   /* top:25%;*/
-   /* position:relative;*/
-   /* align-items: center;*/
-   /* display: flex;*/
-   /* justify-content: center;*/
-   /*border:5px solid black;*/
-   /*width:900px;*/
-   border:2px solid blue;
   margin: auto;
   position: relative;
   text-align: center;
   top: 22%;
   width:900px; 
-  background-color:pink;
-
+    border:3px solid #e0bcbf;
 }
 
 .input-box{
@@ -44,12 +37,11 @@ body{
     padding:8px;
     width:85%;
     font-size:15px;
-    
 }
 
 .buttonStyle{
    font-size:16px;
-   padding-left:10px;
+   padding-left:18px;
    height:38px;
 }
 
