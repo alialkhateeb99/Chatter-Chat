@@ -16,6 +16,8 @@
   -  ``` pip install eventlet ``` 
   - ``` npm install -g webpack ```
   - ``` npm install --save-dev webpack ```
+  - ``` npm install --save-dev style-loader ``` 
+  - ``` npm install --save-dev css-loader ```
   - ``` npm install socket.io-client --save ```
   - If you encouncer any errors, use ``` sudo pip/npm ``` , or use the full path of pip using ``` which pip ```
   ### Setting up PSQL with Python
@@ -58,4 +60,11 @@
   ### Technical Issues
   - Had an issue with some messages not being rendered in the client side. Fixed it by correctly setting a react useState hook alongside a useEffect hook
   which will update the page everytime a new message arrives.
+  - Had an issue with how to style useState arrays, i fixed this by mapping all the values using map() function and pass a className/css attribute to appropriately
+  style the elements.
+  - Had an issue with displaying CSS in general . This was fixed by    running 
+  ``` npm install --save-dev css-loader ``` and ``` npm install --save-dev style-loader ``` 
+  and  adding 
+  ``` loaders: [  { test: /\.css$/, loader: "style-loader!css-loader" }]  ``` to the webpack.config.js
   - 
+  
