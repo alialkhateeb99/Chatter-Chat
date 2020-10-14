@@ -66,5 +66,8 @@
   ``` npm install --save-dev css-loader ``` and ``` npm install --save-dev style-loader ``` 
   and  adding 
   ``` loaders: [  { test: /\.css$/, loader: "style-loader!css-loader" }]  ``` to the webpack.config.js
-  - 
+  - Had an issue with not being able to display images. This was fixed by enabling more extensions in the webpack.config.js file by adding
+  ```  {
+      test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+      loader: 'url-loader?limit=100000' } ```
   
