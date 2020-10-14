@@ -32,7 +32,7 @@ export default function Content(){
         <ol>
         { 
           messages.map((message,index) => 
-          <li  key={index} > { message } </li>)
+          <li className="list-style" key={index} > { message } </li>)
         }
         </ol>
     </div>

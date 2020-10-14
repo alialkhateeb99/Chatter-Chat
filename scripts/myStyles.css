@@ -45,3 +45,7 @@ body{
    height:38px;
 }
 
+.list-style{
+  list-style-type:none;
+  padding-bottom:10px;
+}
