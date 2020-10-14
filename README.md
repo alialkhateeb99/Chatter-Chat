@@ -48,4 +48,14 @@
     -  ``` heroku create ```
     -  ``` git push heroku master ```
 
+  ### Known Issues
+  - There is currently no option for authentication/login and no usernames are displayed dynamically. Future support for this feature will be to allow login 
+  to distinguish users from each other
+  - The backend server is currently sendings the entire copy of the table in the database everytime the site is refresed. Future support for this to incrementally
+  send message by message, or via caching the messages in the client side.
+  - Number of active users sometimes lags due to socketio issues when opening new tabs/different browsers. Sometimes this issue is fixed by refreshing the page.
   
+  ### Technical Issues
+  - Had an issue with some messages not being rendered in the client side. Fixed it by correctly setting a react useState hook alongside a useEffect hook
+  which will update the page everytime a new message arrives.
+  - 
