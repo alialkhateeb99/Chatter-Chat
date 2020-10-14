@@ -1,13 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { Socket } from './Socket';
 
-
-    
-
+import './myStyles.css';
 
 export function Users(){
     
-    const [activeUsers,setActiveUsers] = useState(1)
+    const [activeUsers,setActiveUsers] = useState(0)
       
        useEffect(() => {
         Socket.on('connected',(data) => {
@@ -22,10 +20,9 @@ export function Users(){
       })
     })
 
-    
     return(
-        <div>
-        {activeUsers } 
+        <div className="users-style">
+       Active Users {activeUsers } 
         </div>
     );
 }

@@ -14,13 +14,19 @@ body{
   flex-direction: column-reverse;
   font-size:22px;
 }
+.users-style{
+  position:absolute;
+  font-size:20px;
+  margin-top:130;
+  margin-left:60%;
+  text-align: center;
+}
 
 .parent-div{
   border:solid 1px #33aaff;
   width:85%;
   height:90%;
   margin:0 auto;
-  border:3px solid #e0bcbf;
 
 }
 .texts{
@@ -29,7 +35,6 @@ body{
   text-align: center;
   top: 22%;
   width:900px; 
-    border:3px solid #e0bcbf;
 }
 
 .input-box{
@@ -48,4 +53,11 @@ body{
 .list-style{
   list-style-type:none;
   padding-bottom:10px;
+}
+.title-style{
+    position:absolute;
+  font-size:36px;
+  margin-top:50px;
+  text-align: center;
+  margin-left:35%;
 }

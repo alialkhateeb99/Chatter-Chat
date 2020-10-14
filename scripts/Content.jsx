@@ -24,6 +24,7 @@ export default function Content(){
   
   return(
     <div className="parent-div">
+    <div className="title-style"> Chatter-chat app</div>
     <Users />
     <div className="Content">
         <ol>
