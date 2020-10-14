@@ -12,7 +12,6 @@ function handleSubmit(event){
     console.log("Sent the message " + newMessage.value + " to the server!");
     
     newMessage.value =''
-    
     event.preventDefault();
 }
 

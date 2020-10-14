@@ -9,7 +9,6 @@ import './myStyles.css';
 export default function Content(){
   const [messages,setMessages] = useState([])
   
-
   function getNewMessages(){
     
     useEffect(() => {
@@ -23,12 +22,10 @@ export default function Content(){
   
   getNewMessages();
   
-
   return(
     <div className="parent-div">
     <Users />
     <div className="Content">
-
         <ol>
         { 
           messages.map((message,index) => 
@@ -36,7 +33,6 @@ export default function Content(){
         }
         </ol>
     </div>
- 
       <div className="texts">
           <Button > </Button>
       </div>

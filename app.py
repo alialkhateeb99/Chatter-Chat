@@ -30,9 +30,7 @@ db.app = app
 db.create_all()
 db.session.commit()
 
-
 def emit_all_messages(channel):
-    #we are going to emit to 'all messages'
     all_messages = [ \
         db_message.message for db_message in \
         db.session.query(models.Messages).all() ]
@@ -66,9 +64,7 @@ def on_new_message(data):
     if result != -1:
         db.session.add(models.Messages("ALIS_CHAT_BOT : " + result ))
         
-    # bot functions todo
     db.session.commit();
-    
     emit_all_messages(MESSAGES_RECEIVED_CHANNEL_KEY)
 
 
