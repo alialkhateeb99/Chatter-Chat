@@ -32,3 +32,7 @@
   - Make a new file called ``` sql.env ``` and insert ``` SQL_USER=<UserNameHere> ``` and ``` SQL_PASSWORD=<PasswordHere> ```
   - Make another variable called ``` DATABASE_URL ```  and insert ``` postgresql://<usernamehere>:<passwordhere>@localhost/<nameofdatabasehere> ```
   
+  ### Enabling Read/Write from SQLAlchemy
+  - run ``` sudo vim /var/lib/pgsql9/data/pg_hba.conf ``` and type the command ``` :%s/ident/md5/g ``` in vim
+  - Restart the server with ``` sudo service postgresql restart ``` 
+  
