@@ -10,6 +10,7 @@
    
   ## Installation
   ### Run the following commands
+  - ``` nvm install 7  ``` 
   - ```  npm install  ```
   - ```  pip install flask-socketio ```
   -  ``` pip install eventlet ``` 
@@ -35,4 +36,16 @@
   ### Enabling Read/Write from SQLAlchemy
   - run ``` sudo vim /var/lib/pgsql9/data/pg_hba.conf ``` and type the command ``` :%s/ident/md5/g ``` in vim
   - Restart the server with ``` sudo service postgresql restart ``` 
+  
+  ### Deploying to Heroku
+  - Sign up for heroku at heroku.com 
+  - Install heroku by running ``` npm install -g heroku ```
+  - Make two files ``` requirements.txt ``` and ``` Procfile ``` named exactly as shown.
+  - Run ``` pip freeze > requirements.txt ``` and insert ``` web: python app.py ``` in the Procfile
+  Run the following commands:
+    - ``` nvm i v8 ```
+    - ``` heroku login -i ```
+    -  ``` heroku create ```
+    -  ``` git push heroku master ```
+
   
