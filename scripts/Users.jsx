@@ -22,7 +22,7 @@ export function Users(){
 
     return(
         <div className="users-style">
-       Active Users {activeUsers } 
+       Active Users In Session {activeUsers } 
         </div>
     );
 }
