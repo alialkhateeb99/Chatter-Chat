@@ -49,3 +49,13 @@ def get_bot_info(message):
     else:
         return -1
     
+list_of_images_extensions = ["jpg","png","gif"]
+
+def check_message_image(message):
+    image_extension = message[-3:].lower()
+    if image_extension in list_of_images_extensions:
+        image_url = "<img src='" + message + " width='200' height='200' >"
+        return image_url
+    else:
+        return -1
+        

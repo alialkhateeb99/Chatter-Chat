@@ -59,9 +59,13 @@ def on_new_message(data):
     print("Got an event for new message input with data:", data)
     
     db.session.add(models.Messages(data["message"]));
-    result = get_bot_info(data["message"])
-    if result != -1:
-        db.session.add(models.Messages("ALIS_CHAT_BOT : " + result ))
+    bot_result = get_bot_info(data["message"])
+    if bot_result != -1:
+        db.session.add(models.Messages("ALIS_CHAT_BOT : " + bot_result ))
+    image_result = check_message_image(data["message"])
+    if image_result != -1:
+        db.session.add(models.Messages(image_result))
+
         
     db.session.commit();
     emit_all_messages(MESSAGES_RECEIVED_CHANNEL_KEY)

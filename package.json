@@ -30,8 +30,10 @@
     ]
   },
   "dependencies": {
+    "interweave": "^12.5.0",
     "react-google-login": "^5.1.22",
     "react-linkify": "^1.0.0-alpha",
+    "react-render-html": "^0.6.0",
     "socket.io-client": "^2.3.1",
     "url-loader": "^4.1.1"
   }
