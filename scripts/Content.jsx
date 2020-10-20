@@ -30,7 +30,7 @@ export default function Content(){
     <div className="title-style"> Chatter-chat app</div>
     { /*<div> {renderHTML("<img src='https://www.outsideonline.com/sites/default/files/styles/width_1200/public/2019/12/11/zion-national-park_h.jpg' width='200' height='200' >")}  </div>*/}
     <Users />
-    <Interweave content="<img src='https://www.outsideonline.com/sites/default/files/styles/width_1200/public/2019/12/11/zion-national-park_h.jpg' "  />
+   {/* <Interweave content="<img src='https://www.outsideonline.com/sites/default/files/styles/width_1200/public/2019/12/11/zion-national-park_h.jpg' "  /> */}
     <div className="Content">
         <ol>
         { 
