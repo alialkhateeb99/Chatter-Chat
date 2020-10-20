@@ -5,8 +5,8 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import flask_sqlalchemy
 import models
+import modelsAUTH
 import json
-import oauth_models
 from botfunctions import *
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
@@ -19,11 +19,14 @@ socketio.init_app(app, cors_allowed_origins="*")
 dotenv_path = join(dirname(__file__), 'sql.env')
 load_dotenv(dotenv_path)
 
-database_uri = os.getenv('DATABASE_URL')
+#database_uri = os.getenv('DATABASE_URL')
+database_uri = os.environ['DATABASE_URL']
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
 db = flask_sqlalchemy.SQLAlchemy(app)
+db.init_app(app)
 db.app = app
 
 db.create_all()

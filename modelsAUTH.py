@@ -1,3 +1,4 @@
+# modelsAUTH.py
 import flask_sqlalchemy
 from app import db
 from enum import Enum
