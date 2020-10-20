@@ -5,7 +5,6 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import flask_sqlalchemy
 import models
-import modelsAUTH
 import json
 from botfunctions import *
 
