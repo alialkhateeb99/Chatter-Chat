@@ -10,7 +10,6 @@ from botfunctions import *
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
 
-
 app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
