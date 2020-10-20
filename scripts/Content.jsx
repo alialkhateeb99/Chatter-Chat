@@ -3,6 +3,7 @@ import React, { useState,useEffect,useRef } from "react";
 import  {Button} from './Button';
 import {Users} from './Users';
 import { Socket } from './Socket';
+import Linkify from 'react-linkify';
 import './myStyles.css';
 
 
@@ -30,7 +31,10 @@ export default function Content(){
         <ol>
         { 
           messages.map((message,index) => 
-          <li className="list-style" key={index} > { message } </li>)
+          <li className="list-style" key={index} >
+          <Linkify properties={{target: '_blank', 
+          style: {color: 'red', fontWeight: 'bold'}}}>
+          { message } </Linkify> </li>  )
         }
         </ol>
     </div>
