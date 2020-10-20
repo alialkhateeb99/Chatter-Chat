@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import flask_sqlalchemy
 import models
 import json
+import oauth_models
 from botfunctions import *
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
