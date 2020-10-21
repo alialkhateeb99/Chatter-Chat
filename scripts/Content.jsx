@@ -16,7 +16,7 @@ export default function Content(){
     
     useEffect(() => {
       Socket.on('all messages',(data) =>{
-        console.log("Received messages from the server: " + data["allMessages"]);
+        //console.log("Received messages from the server: " + data["allMessages"]);
         setMessages(data["allMessages"])
         
       })
