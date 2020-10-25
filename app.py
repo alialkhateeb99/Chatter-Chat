@@ -61,8 +61,8 @@ def on_new_message(data):
     
     db.session.add(models.Messages(data["message"]));
     bot_result = get_bot_info(data["message"])
-    if bot_result != -1:
-        db.session.add(models.Messages("ALIS_CHAT_BOT : " + bot_result ))
+    if bot_result["bot_result"] != -1 and bot_result["is_bot"] == True:
+        db.session.add(models.Messages("ALIS_CHAT_BOT : " + bot_result["bot_result"] ))
     image_result = check_message_image(data["message"])
     if image_result != -1:
         db.session.add(models.Messages(image_result))

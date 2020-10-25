@@ -3,9 +3,17 @@ import requests
 
 list_of_commands = ["about","help","funtranslate","owner"]
 
+KEY_IS_BOT_COMMAND = "is_bot"
+KEY_BOT_COMMAND = "bot_command"
+KEY_BOT_RESULT = "bot_result"
+
 def get_bot_info(message):
     if message == '':
-        return -1
+        return {
+            KEY_IS_BOT_COMMAND: False,
+            KEY_BOT_COMMAND: "",
+            KEY_BOT_RESULT: -1
+        }
         
     splitted_message = message.split()
     if splitted_message[0] == "!!":
@@ -16,14 +24,31 @@ def get_bot_info(message):
             actual_message = " ".join(splitted_message[2:])
             
             if command_name == "about" or command_name == "help" or command_name == "owner":
-                return bot_command_helper(command_name)
-                
+                result = bot_command_helper(command_name)
+                return {
+                    KEY_IS_BOT_COMMAND : True,
+                    KEY_BOT_COMMAND : command_name,
+                    KEY_BOT_RESULT: result
+                }
             if command_name == "funtranslate":
-                return bot_command_funtranslate(actual_message)
+                result = bot_command_funtranslate(actual_message)
+                return {
+                    KEY_IS_BOT_COMMAND: True,
+                    KEY_BOT_COMMAND : command_name,
+                    KEY_BOT_RESULT: result
+                }
         else:
-            return "The command is not recognized by the bot!"
+            return {
+                KEY_IS_BOT_COMMAND: True,
+                KEY_BOT_COMMAND: "",
+                KEY_BOT_RESULT :"The command is not recognized by the bot!"
+            }
     else:
-        return -1
+        return {
+            KEY_IS_BOT_COMMAND: False,
+            KEY_BOT_COMMAND: "",
+            KEY_BOT_RESULT : "No command entered"
+        }
 
 def bot_command_funtranslate(message):
     try:
