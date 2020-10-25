@@ -49,6 +49,35 @@ class ChatRoomTestCase(unittest.TestCase):
                 
             }
         ]
+        self.success_test_check_message_image = [
+            {
+                KEY_INPUT: "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg",
+                KEY_EXPECTED : 
+                "<img src='https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg' width='200' height='200' >"
+                
+            }
+        ]
+        self.failure_test_check_message_image = [
+            {
+                KEY_INPUT: "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg",
+                KEY_EXPECTED : 
+                "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg"
+                
+            }
+        ]
+    def test_check_message_image_success(self):
+        for test in self.success_test_check_message_image:
+            response = check_message_image(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            
+            self.assertEqual(response,expected)
+            
+    def test_check_message_image_failure(self):
+        for test in self.failure_test_check_message_image:
+            response = check_message_image(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            
+            self.assertNotEqual(response,expected)
         
     def test_get_bot_info_success(self):
         for test in self.success_test_params_get_bot_info:
@@ -81,6 +110,7 @@ class ChatRoomTestCase(unittest.TestCase):
             expected = test[KEY_EXPECTED]
             
             self.assertNotEqual(response,expected)
+    
             
         
 if __name__ == '__main__':
