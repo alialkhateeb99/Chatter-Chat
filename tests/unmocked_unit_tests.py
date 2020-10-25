@@ -65,6 +65,31 @@ class ChatRoomTestCase(unittest.TestCase):
                 
             }
         ]
+        self.success_test_check_url_extension = [
+            {
+                KEY_INPUT: "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg",
+                KEY_EXPECTED : True
+                
+            }
+        ]
+        self.failure_test_check_url_extension = [
+            {
+                KEY_INPUT: "https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option2-764A4983-640x354.jpg",
+                KEY_EXPECTED : False
+            }
+        ]
+    def test_check_url_extension_success(self):
+        for test in self.success_test_check_url_extension:
+            response = check_url_extension(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            self.assertEqual(response,expected)
+    def test_check_url_extension_failure(self):
+        for test in self.failure_test_check_url_extension:
+            response = check_url_extension(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            self.assertNotEqual(response,expected)
+    
+    
     def test_check_message_image_success(self):
         for test in self.success_test_check_message_image:
             response = check_message_image(test[KEY_INPUT])

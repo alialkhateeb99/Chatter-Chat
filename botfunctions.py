@@ -84,9 +84,15 @@ def bot_command_helper(command):
     
 list_of_images_extensions = ["jpg","png","gif"]
 
-def check_message_image(message):
-    image_extension = message[-3:].lower()
+def check_url_extension(url):
+    image_extension = url[-3:].lower()
     if image_extension in list_of_images_extensions:
+        return True
+    else: 
+        return False
+
+def check_message_image(message):
+    if check_url_extension(message) == True:
         image_url = "<img src='" + message + "' width='200' height='200' >"
         return image_url
     else:
