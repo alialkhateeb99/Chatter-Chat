@@ -16,7 +16,7 @@ def get_bot_info(message):
         }
         
     splitted_message = message.split()
-    if splitted_message[0] == "!!":
+    if check_valid_bot_command(message) and splitted_message[0] == "!!":
         command_name = splitted_message[1]
 
         if command_name in list_of_commands:
@@ -80,9 +80,15 @@ def bot_command_helper(command):
         owner = "Ali Alkhateeb is the owner of the site!!"
         return owner
 
-
+def check_valid_bot_command(message):
+    splitted_message = message.split()
+    if len(splitted_message) > 1:
+        return True
+    else:
+        return False
     
 list_of_images_extensions = ["jpg","png","gif"]
+
 
 def check_url_extension(url):
     image_extension = url[-3:].lower()

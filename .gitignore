@@ -10,3 +10,5 @@ test.py
 .~c9_invoke_45nWuB.py
 .~c9_invoke_K9pGb.py
 .~c9_invoke_l8KzHb.py
+.coverage
+htmlcov/

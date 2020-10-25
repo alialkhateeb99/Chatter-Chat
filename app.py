@@ -5,7 +5,6 @@ import flask_socketio
 from os.path import join, dirname
 from dotenv import load_dotenv
 import flask_sqlalchemy
-import models
 import json
 from botfunctions import *
 
@@ -24,6 +23,8 @@ database_uri = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 
 db = flask_sqlalchemy.SQLAlchemy(app)
+import models
+
 db.init_app(app)
 db.app = app
 

@@ -78,17 +78,32 @@ class ChatRoomTestCase(unittest.TestCase):
                 KEY_EXPECTED : False
             }
         ]
+        self.success_test_check_valid_bot_command = [
+            {
+                KEY_INPUT: "!! help",
+                KEY_EXPECTED : True
+                
+            }
+        ]
+        self.failure_test_check_valid_bot_command = [
+            {
+                KEY_INPUT: "!! help",
+                KEY_EXPECTED : False
+            }
+        ]
+    
+            
     def test_check_url_extension_success(self):
         for test in self.success_test_check_url_extension:
             response = check_url_extension(test[KEY_INPUT])
             expected = test[KEY_EXPECTED]
             self.assertEqual(response,expected)
+            
     def test_check_url_extension_failure(self):
         for test in self.failure_test_check_url_extension:
             response = check_url_extension(test[KEY_INPUT])
             expected = test[KEY_EXPECTED]
             self.assertNotEqual(response,expected)
-    
     
     def test_check_message_image_success(self):
         for test in self.success_test_check_message_image:
@@ -136,7 +151,17 @@ class ChatRoomTestCase(unittest.TestCase):
             
             self.assertNotEqual(response,expected)
     
+    def test_check_valid_bot_command_success(self):
+        for test in self.success_test_check_valid_bot_command:
+            response = check_valid_bot_command(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            self.assertEqual(response,expected)
             
+    def test_check_valid_bot_command_failure(self):
+        for test in self.failure_test_check_valid_bot_command:
+            response = check_valid_bot_command(test[KEY_INPUT])
+            expected = test[KEY_EXPECTED]
+            self.assertNotEqual(response,expected)
         
 if __name__ == '__main__':
     unittest.main()
