@@ -1,0 +1,6 @@
+[MASTER]
+disable=
+    C0413, # wrong-import-position for models( this fixes circular imports)
+    E1101, # db has functions mentioned
+    W1508, # wrongly env var error
+    R0903, # methods sufficient for table definition

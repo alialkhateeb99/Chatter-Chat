@@ -1,10 +1,15 @@
-# models.py
-import flask_sqlalchemy
-from app import db
+'''
+#models.py
+Defines the table for the database
+'''
 from enum import Enum
+from app import db
 
 
 class Messages(db.Model):
+    '''
+    Table definition for messages
+    '''
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.String(120))
 
@@ -16,12 +21,15 @@ class Messages(db.Model):
 
 
 class AuthUser2(db.Model):
+    '''
+    Table definition for auth users
+    '''
     id = db.Column(db.Integer, primary_key=True)
     auth_type = db.Column(db.String(120))
     name = db.Column(db.String(120))
 
     def __init__(self, name, auth_type):
-        assert type(auth_type) is AuthUserType
+        assert isinstance(auth_type) is AuthUserType
         self.name = name
         self.auth_type = auth_type.value  # sending enum value and not object
 
@@ -30,6 +38,9 @@ class AuthUser2(db.Model):
 
 
 class AuthUserType(Enum):
+    '''
+    Defines the correct enum values for auth
+    '''
     LINKEDIN = "linkedin"
     GOOGLE = "google"
     FACEBOOK = "facebook"

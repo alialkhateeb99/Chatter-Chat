@@ -1,4 +1,7 @@
-# botfunctions.py
+'''
+botfunctions.py
+Handles the logic for handling bot commands
+'''
 import requests
 
 list_of_commands = ["about", "help", "funtranslate", "owner"]
@@ -9,6 +12,10 @@ KEY_BOT_RESULT = "bot_result"
 
 
 def get_bot_info(message):
+    '''
+    Takes in message and returns a dict
+    defining bot command and result
+    '''
     if message == "":
         return {KEY_IS_BOT_COMMAND: False, KEY_BOT_COMMAND: "", KEY_BOT_RESULT: -1}
 
@@ -20,11 +27,7 @@ def get_bot_info(message):
 
             actual_message = " ".join(splitted_message[2:])
 
-            if (
-                command_name == "about"
-                or command_name == "help"
-                or command_name == "owner"
-            ):
+            if command_name in ("about","help","owner"):
                 result = bot_command_helper(command_name)
                 return {
                     KEY_IS_BOT_COMMAND: True,
@@ -50,9 +53,18 @@ def get_bot_info(message):
             KEY_BOT_COMMAND: "",
             KEY_BOT_RESULT: "No command entered",
         }
+    return {
+            KEY_IS_BOT_COMMAND: False,
+            KEY_BOT_COMMAND: "",
+            KEY_BOT_RESULT: "No command entered",
+        }
+
 
 
 def bot_command_funtranslate(message):
+    '''
+    This function makes an API call funtranslate
+    '''
     try:
         data = {"text": message}
         headers = {
@@ -65,45 +77,56 @@ def bot_command_funtranslate(message):
         )
         data = response.json()
         translated = data["contents"]["translated"]
-    except:
+    except KeyError:
         return "No api calls left for the bot! give it some time."
     return translated
 
 
 def bot_command_helper(command):
+    '''
+    Helper function for get_bot_info
+    to print command results
+    '''
     if command == "about":
         about_text = "Hello! Welcome to Ali's chat room!"
         return about_text
-    elif command == "help":
+    if command == "help":
         help_text = " '!! about' for a brief description about the chat room."
         return help_text
-    elif command == "owner":
+    if command == "owner":
         owner = "Ali Alkhateeb is the owner of the site!!"
         return owner
+    return ""
 
 
 def check_valid_bot_command(message):
+    '''
+    this function checks if a message
+    is splittable and is a valid message
+    '''
     splitted_message = message.split()
-    if len(splitted_message) > 1:
-        return True
-    else:
-        return False
+    return bool (len(splitted_message) > 1)
 
 
 list_of_images_extensions = ["jpg", "png", "gif"]
 
 
 def check_url_extension(url):
+    '''
+    This function checks if a url has
+    a supported image extension
+    '''
     image_extension = url[-3:].lower()
-    if image_extension in list_of_images_extensions:
-        return True
-    else:
-        return False
+    return bool(image_extension in list_of_images_extensions)
 
 
 def check_message_image(message):
-    if check_url_extension(message) == True:
+    '''
+    This function converts a valid image url
+    to a valid HTML image tag
+    '''
+    if check_url_extension(message):
         image_url = "<img src='" + message + "' width='200' height='200' >"
         return image_url
-    else:
-        return -1
+
+    return -1
