@@ -1,8 +1,8 @@
 #unmocked_unit_tests.py
 
+from os.path import dirname, join
 import sys
-sys.path.append("..")
-
+sys.path.insert(1, join(dirname(__file__), '../'))
 import unittest
 from botfunctions import *
 import botfunctions
@@ -20,7 +20,25 @@ class ChatRoomTestCase(unittest.TestCase):
                     KEY_BOT_COMMAND : "owner",
                     KEY_BOT_RESULT : "Ali Alkhateeb is the owner of the site!!"
                 }
+            },
+            {
+                KEY_INPUT: "!!",
+                KEY_EXPECTED: {
+                    KEY_IS_BOT_COMMAND: False,
+                    KEY_BOT_COMMAND: "",
+                    KEY_BOT_RESULT: "No command entered"
+                }
+            },
+            {
+                KEY_INPUT:"lol",
+                 KEY_EXPECTED: {
+                    KEY_IS_BOT_COMMAND: False,
+                    KEY_BOT_COMMAND: "",
+                    KEY_BOT_RESULT: "No command entered"
+                }
             }
+            
+           
         ]
         self.failure_test_params_get_bot_info = [ 
             {
@@ -35,10 +53,17 @@ class ChatRoomTestCase(unittest.TestCase):
         self.success_test_params_bot_command_helper = [
             {
                 KEY_INPUT: "about",
+                KEY_EXPECTED : "Hello! Welcome to Ali's chat room!"
+            },
+            {
+                KEY_INPUT: "owner",
                 KEY_EXPECTED : 
-                "Hello! Welcome to Ali's chat room! I am here to assist" + \
-                " you! For a list of commands type '!! help' "
+                "Ali Alkhateeb is the owner of the site!!" 
                 
+            },
+            {
+                KEY_INPUT: "help",
+                KEY_EXPECTED: " '!! about' for a brief description about the chat room."
             }
         ]
         self.failure_test_params_bot_command_helper = [
@@ -83,6 +108,10 @@ class ChatRoomTestCase(unittest.TestCase):
                 KEY_INPUT: "!! help",
                 KEY_EXPECTED : True
                 
+            },
+            {
+                KEY_INPUT: "!! HELP HELP !!",
+                KEY_EXPECTED: True
             }
         ]
         self.failure_test_check_valid_bot_command = [
@@ -140,7 +169,7 @@ class ChatRoomTestCase(unittest.TestCase):
             
     def test_bot_command_helper_success(self):
         for test in self.success_test_params_bot_command_helper:
-            response = bot_command_helper(test[KEY_INPUT])
+            response = botfunctions.bot_command_helper(test[KEY_INPUT])
             expected = test[KEY_EXPECTED]
             
             self.assertEqual(response,expected)

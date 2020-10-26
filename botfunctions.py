@@ -67,14 +67,10 @@ def bot_command_funtranslate(message):
         
 def bot_command_helper(command):
     if command == "about":
-        about_text = "Hello! Welcome to Ali's chat room! I am here to assist"
-        about_text += " you! For a list of commands type '!! help' "
+        about_text = "Hello! Welcome to Ali's chat room!"
         return about_text
     elif command == "help":
         help_text =  " '!! about' for a brief description about the chat room."
-        help_text += " '!! help' for a list of supported commands."
-        help_text += " '!! funtranslate' to translate a message to a fun language!"
-        help_text += " '!! owner' to see the owner of the site!"
         return help_text
     elif command == "owner":
         owner = "Ali Alkhateeb is the owner of the site!!"
