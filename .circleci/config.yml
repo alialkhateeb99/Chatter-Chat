@@ -18,11 +18,14 @@ jobs:
       - run:
           command: python ./tests/mocked_unit_tests.py
           name: Test2
-  heroku-deploy:
-     - heroku/deploy-via-git
+          
+heroku-deploy:
+- heroku/deploy-via-git
 
 workflows:
   main:
     jobs:
       - build-and-test
-      - heroku-deploy
+  heroku_deploy:
+    jobs:
+      - heroku/deploy-via-git
