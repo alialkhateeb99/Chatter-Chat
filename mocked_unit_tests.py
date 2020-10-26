@@ -28,7 +28,8 @@ class MockResponse:
 
 class FunTranslateTestCases(unittest.TestCase):
     ''' Defines mock api call and test params '''
-    def mocked_api_call(self):
+    @classmethod
+    def mocked_api_call(cls):
         ''' returns mock response '''
         return MockResponse({KEY_EXPECTED: "is a boss, Ali Alkhateeb"},200)
     def setUp(self):

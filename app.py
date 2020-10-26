@@ -13,6 +13,13 @@ import botfunctions
 
 
 MESSAGES_RECEIVED_CHANNEL_KEY = "all messages"
+SOCKET_CONNECT_KEY = "connect"
+SOCKET_ON_CONNECT_KEY = "connected"
+SOCKET_DISCONNECT_KEY = "disconnect"
+ON_NEW_MESSAGE_KEY = "new message"
+KEY_IS_BOT_COMMAND = "is_bot"
+KEY_BOT_COMMAND = "bot_command"
+KEY_BOT_RESULT = "bot_result"
 
 app = flask.Flask(__name__)
 
@@ -47,41 +54,37 @@ def emit_all_messages(channel):
     socketio.emit(channel, {"allMessages": all_messages})
 
 
-@socketio.on("connect")
+@socketio.on(SOCKET_CONNECT_KEY)
 def on_connect():
     '''
     When a new user is connected, this function
     emits all messages from DB to client each time
     '''
-    print("Someone connected!")
-    socketio.emit("connected", {"test": "Connected"})
+    socketio.emit(SOCKET_ON_CONNECT_KEY, {"test": "Connected"})
 
     emit_all_messages(MESSAGES_RECEIVED_CHANNEL_KEY)
 
 
-@socketio.on("disconnect")
+@socketio.on(SOCKET_DISCONNECT_KEY)
 def on_disconnect():
     '''
     When a new user is disconnected, this
     function emits that a user has disconnected
     '''
-    print("Someone disconnected!")
     socketio.emit("disconnect", {"test": "Disconnected"})
 
 
-@socketio.on("new message")
+@socketio.on(ON_NEW_MESSAGE_KEY)
 def on_new_message(data):
     '''
     When a new message is received this function
     checks wether it is an image/botfunction
     then adds it to the database.
     '''
-    print("Got an event for new message input with data:", data)
-
     db.session.add(models.Messages(data["message"]))
     bot_result = botfunctions.get_bot_info(data["message"])
-    if bot_result["bot_result"] != -1 and bot_result["is_bot"]:
-        db.session.add(models.Messages("ALIS_CHAT_BOT : " + bot_result["bot_result"]))
+    if bot_result[KEY_BOT_RESULT] != -1 and bot_result[KEY_IS_BOT_COMMAND]:
+        db.session.add(models.Messages("ALIS_CHAT_BOT : " + bot_result[KEY_BOT_RESULT]))
     image_result = botfunctions.check_message_image(data["message"])
     if image_result != -1:
         db.session.add(models.Messages(image_result))

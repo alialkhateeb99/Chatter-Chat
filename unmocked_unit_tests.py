@@ -43,8 +43,31 @@ class ChatRoomTestCase(unittest.TestCase):
                     KEY_BOT_COMMAND: "",
                     KEY_BOT_RESULT: "No command entered"
                 }
-            }
-
+            },
+            {
+                KEY_INPUT:"",
+                KEY_EXPECTED:{
+                    KEY_IS_BOT_COMMAND: False,
+                    KEY_BOT_COMMAND: "",
+                    KEY_BOT_RESULT : -1
+                }
+            },
+            {
+                KEY_INPUT:"!! funtranslate",
+                KEY_EXPECTED:{
+                    KEY_IS_BOT_COMMAND: True,
+                    KEY_BOT_COMMAND: "funtranslate",
+                    KEY_BOT_RESULT : "error"
+                }
+            },
+            {
+                KEY_INPUT:"lol bot",
+                KEY_EXPECTED:{
+                    KEY_IS_BOT_COMMAND: False,
+                    KEY_BOT_COMMAND: "",
+                    KEY_BOT_RESULT : "No command entered"
+                }
+            },
 
         ]
         self.failure_test_params_get_bot_info = [
@@ -71,6 +94,10 @@ class ChatRoomTestCase(unittest.TestCase):
             {
                 KEY_INPUT: "help",
                 KEY_EXPECTED: " '!! about' for a brief description about the chat room."
+            },
+            {
+                KEY_INPUT: "anything",
+                KEY_EXPECTED : ""
             }
         ]
         self.failure_test_params_bot_command_helper = [
@@ -88,6 +115,11 @@ class ChatRoomTestCase(unittest.TestCase):
                 KEY_EXPECTED :
                 "<img src='https://www.extremetech.com/wp-content/uploads/ \
                 2019/12/SONATA-hero-option2-764A4983-640x354.jpg' width='200' height='200' >"
+
+            },
+            {
+                KEY_INPUT: "NONIMAGE",
+                KEY_EXPECTED : -1
 
             }
         ]

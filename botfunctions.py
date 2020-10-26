@@ -47,17 +47,12 @@ def get_bot_info(message):
                 KEY_BOT_COMMAND: "",
                 KEY_BOT_RESULT: "The command is not recognized by the bot!",
             }
-    else:
-        return {
-            KEY_IS_BOT_COMMAND: False,
-            KEY_BOT_COMMAND: "",
-            KEY_BOT_RESULT: "No command entered",
-        }
+
     return {
-            KEY_IS_BOT_COMMAND: False,
-            KEY_BOT_COMMAND: "",
-            KEY_BOT_RESULT: "No command entered",
-        }
+        KEY_IS_BOT_COMMAND: False,
+        KEY_BOT_COMMAND: "",
+        KEY_BOT_RESULT: "No command entered",
+    }
 
 
 
@@ -76,9 +71,9 @@ def bot_command_funtranslate(message):
             data=data,
         )
         data = response.json()
-        translated = data["contents"]["translated"]
+        translated = data["content"]["translated"]
     except KeyError:
-        return "No api calls left for the bot! give it some time."
+        return "error"
     return translated
 
 
