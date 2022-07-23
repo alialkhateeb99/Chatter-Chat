@@ -1,11 +1,5 @@
-# Project 2 Milestone 1
 ## Chatter-chat application
 
-## Cloning repository 
-
-- Add a new folder under your userhome directory 
-- Run the below command 
-    - ``` git clone https://github.com/NJIT-CS490/project2-m1-aaa332```
     
    
   ## Installation
